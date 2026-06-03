@@ -200,7 +200,7 @@ if (!apiKey) {
 
 ```javascript
 // ❌ CRITICAL: SQL injection vulnerability
-const query = `SELECT * FROM users WHERE id = ${userId}`
+const query = "SELECT * FROM users WHERE id = " + userId
 await db.query(query)
 
 // ✅ CORRECT: Parameterized queries
@@ -215,7 +215,7 @@ const { data } = await supabase
 ```javascript
 // ❌ CRITICAL: Command injection
 const { exec } = require('child_process')
-exec(`ping ${userInput}`, callback)
+exec("ping " + userInput, callback)
 
 // ✅ CORRECT: Use libraries, not shell commands
 const dns = require('dns')
